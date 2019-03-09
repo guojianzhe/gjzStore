@@ -118,8 +118,13 @@ public class OrderServlet extends BaseServlet {
 			
 			Orders findByOid = orderService.findByOid(oid);
 			
+			request.setAttribute("orders", findByOid);
+			
+			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+			request.setAttribute("msg", "≤È—Ø∂©µ• ß∞‹");
+			return "/jsp/info.jsp";
 		}
 		
 		
