@@ -39,4 +39,15 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+	@Override
+	public Product findByPid(String pid) throws SQLException {
+		
+		ProductDao productDao = new ProductDaoImpl();
+		
+		Product product = productDao.findByPid(pid);
+		
+		
+		return product;
+	}
+
 }

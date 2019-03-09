@@ -2,13 +2,13 @@ package com.heima.domain;
 
 import java.util.List;
 
-public class PageBean {
+public class PageBean<T> {
 	
 	private Integer page;
 	private Integer pageSize;
 	private Integer totalCount;
 	private Integer totalPage;
-	private List<Product> list;
+	private List<T> list;
 	public Integer getPage() {
 		return page;
 	}
@@ -33,13 +33,17 @@ public class PageBean {
 	public void setTotalPage(Integer totalPage) {
 		this.totalPage = totalPage;
 	}
-	public List<Product> getList() {
+	public List<T> getList() {
 		return list;
 	}
-	public void setList(List<Product> list) {
+	public void setList(List<T> list) {
 		this.list = list;
 	}
-	
+	@Override
+	public String toString() {
+		return "PageBean [page=" + page + ", pageSize=" + pageSize + ", totalCount=" + totalCount + ", totalPage="
+				+ totalPage + ", list=" + list + "]";
+	}
 	
 	
 	

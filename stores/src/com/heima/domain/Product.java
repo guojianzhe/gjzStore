@@ -11,10 +11,16 @@ public class Product
 	private Integer is_hot; 
 	private String pdesc; 
 	private Integer pflag; 
-	
-	// 外键 --只要是外键  就一定要用外键指向的对象来表示
-	private CateGory category; 
-	
+	  
+	private CateGory cateGory;
+
+	public CateGory getCateGory() {
+		return cateGory;
+	}
+
+	public void setCateGory(CateGory cateGory) {
+		this.cateGory = cateGory;
+	}
 
 	public String getPid() {
 		return pid;
@@ -84,16 +90,14 @@ public class Product
 		return pflag;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [pid=" + pid + ", pname=" + pname +  ", shop_price="
+				+ shop_price + ", pimage=" + pimage +  "]";
+	}
+
 	public void setPflag(Integer pflag) {
 		this.pflag = pflag;
-	}
-
-	public CateGory getCategory() {
-		return category;
-	}
-
-	public void setCategory(CateGory category) {
-		this.category = category;
 	}
 
 	
