@@ -16,8 +16,8 @@
 					<c:if test="${not empty sessionScope.user }">
 						<ol class="list-inline">
 							<li>欢迎你:${user.name } 用户</li>
-							<li><a href="#">我的订单</a></li>
-							<li><a href="cart.htm">购物车</a></li>
+							<li><a href="${pageContext.request.contextPath }/order?method=myOrder&page=1">我的订单</a></li>
+							<li><a href="${pageContext.request.contextPath }/cart?method=myCart">购物车</a></li>
 							<li><a href="${pageContext.request.contextPath }/user?method=quit">退出</a></li>
 						</ol>
 					</c:if>

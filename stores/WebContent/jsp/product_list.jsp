@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 
@@ -40,13 +41,13 @@
 			<c:if test="${not empty pb.list }">
 			
 			
-			<c:forEach items="${pb.list }" var="product">
+			<c:forEach items="${pb.list}" var="product">
 				<div class="col-md-2">
-					<a href="product_info.htm">
-						<img src="${pageContext.request.contextPath}/${product.pimage }" width="170" height="170" style="display: inline-block;">
+					<a href="${pageContext.request.contextPath}/product?method=findByPid&pid=${product.pid}">
+						<img src="${pageContext.request.contextPath}/${product.pimage}" width="170" height="170" style="display: inline-block;">
 					</a>
-					<p><a href="product_info.html" style='color:green'>${product.pname }</a></p>
-					<p><font color="#FF0000">商城价：&yen;${product.shop_price }</font></p>
+					<p><a href="product_info.html" style='color:green'>${product.pname}</a></p>
+					<p><font color="#FF0000">商城价：&yen;${product.shop_price}</font></p>
 				</div>
 			
 			</c:forEach>
@@ -58,27 +59,45 @@
 		<!--分页 -->
 		<div style="width:380px;margin:0 auto;margin-top:50px;">
 			<ul class="pagination" style="text-align:center; margin-top:10px;">
-			
-			
-				<li>
-					<a href="${pageContext.request.contextPath }/product?method=findProduct&page=${pb.page-1}&cid=${cid}" aria-label="Previous">
-						<span aria-hidden="true">&laquo;</span>
-					</a>
-				</li>
-<!-- 				<li class="active"><a href="#">1</a></li> -->
-<!-- 				<li><a href="#">2</a></li> -->
-<!-- 				<li><a href="#">3</a></li> -->
-<!-- 				<li><a href="#">4</a></li> -->
-<!-- 				<li><a href="#">5</a></li> -->
-<!-- 				<li><a href="#">6</a></li> -->
-<!-- 				<li><a href="#">7</a></li> -->
-<!-- 				<li><a href="#">8</a></li> -->
-<!-- 				<li><a href="#">9</a></li> -->
-				<li>
-					<a href="${pageContext.request.contextPath }/product?method=findProduct&page=${pb.page+1}&cid=${cid}" aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
-					</a>
-				</li>
+<!-- 			class="disabled" -->
+				<c:if test="${pb.page<=1 }">
+					<li class="disabled">
+						<a href="javaScript:;" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+				</c:if>
+				<c:if test="${pb.page>1 }">
+					<li>
+						<a href="${pageContext.request.contextPath }/product?method=findProduct&page=${pb.page-1 }&cid=${cid}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+				</c:if>
+					<c:forEach begin="1" end="${pb.totalPage }" var="page">
+						<c:if test="${pb.page==page }">
+							<li class="active"><a href="javascript:;">${page }</a></li>
+						</c:if>
+						<c:if test="${pb.page!=page }">
+							<li><a href="${pageContext.request.contextPath }/product?method=findProduct&page=${page }&cid=${cid}">${page }</a></li>
+						
+						</c:if>
+					</c:forEach>
+					
+				<c:if test="${pb.totalPage<=pb.page }">
+					<li class="disabled">
+						<a href="javascript:;" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+				<c:if test="${pb.totalPage>pb.page }">
+					<li>
+						<a href="${pageContext.request.contextPath }/product?method=findProduct&page=${pb.page+1 }&cid=${cid}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
 			</ul>
 		</div>
 		<!-- 分页结束=======================        -->
