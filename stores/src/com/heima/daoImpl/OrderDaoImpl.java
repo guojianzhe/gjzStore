@@ -94,11 +94,7 @@ public class OrderDaoImpl implements OrderDao {
 	public Orders findByOid(String oid) throws Exception {
 		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		
-<<<<<<< HEAD
 		String sql = "select * from orders where oid=?";
-=======
-		String sql = "select * from orders oid=?";
->>>>>>> c963c9402dc9a1a6abfe56f0c5b7597eabc3efb9
 		
 		Orders orders = qr.query(sql, new BeanHandler<Orders>(Orders.class),oid);
 		
