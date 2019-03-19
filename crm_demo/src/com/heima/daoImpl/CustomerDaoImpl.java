@@ -10,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.heima.dao.CustomerDao;
 import com.heima.domain.Customer;
+import com.heima.utils.HibernateUtils;
 
 public class CustomerDaoImpl implements CustomerDao {
 
@@ -30,6 +31,19 @@ public class CustomerDaoImpl implements CustomerDao {
 		 session.close();
 		 
 		return list;
+	}
+
+	@Override
+	public void add(Customer customer) {
+		Session session = HibernateUtils.openSession();
+		Transaction ts = session.beginTransaction();
+		
+		session.save(customer);
+		
+		
+		ts.commit();
+		session.close();
+		
 	}
 
 }

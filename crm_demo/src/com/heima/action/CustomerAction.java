@@ -11,10 +11,20 @@ import com.heima.domain.Customer;
 import com.heima.service.CustomerService;
 import com.heima.serviceImpl.CustomerServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
-public class CustomerAction extends ActionSupport{
+import sun.awt.ModalExclude;
 
+public class CustomerAction extends ActionSupport implements ModelDriven<Customer>{
 
+	private Customer customer = new Customer();
+	
+	@Override
+	public Customer getModel() {
+		// TODO Auto-generated method stub
+		return customer;
+	}
+	//查询所有客户
 	public String findAll() {
 		
 		CustomerService customerService=new CustomerServiceImpl();
@@ -23,8 +33,23 @@ public class CustomerAction extends ActionSupport{
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		request.setAttribute("list",list);
-		return "success";
+		return "findAll";
 	}
+	//跳转到添加页面
+	public String addUI() {
+		
+		return "addUI";
+	}
+	
+	//保存客户
+	public String add() {
+		
+		CustomerService customerService = new CustomerServiceImpl();
+		customerService.add(customer);
+		
+		return "add";
+	}
+	
 	
 	
 }

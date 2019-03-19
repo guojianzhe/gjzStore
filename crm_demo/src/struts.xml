@@ -6,8 +6,9 @@
 	<package name="test1" extends="struts-default" namespace="/">
 		<action name="customer_*" class="com.heima.action.CustomerAction" method="{1}">
 		
-			<result name="success">/jsp/customer/list.jsp</result>
-		
+			<result name="findAll">/jsp/customer/list.jsp</result>
+			<result name="addUI">/jsp/customer/add.jsp</result>
+			<result name="add" type="redirectAction">customer_findAll</result>
 		</action>
 	</package>
 

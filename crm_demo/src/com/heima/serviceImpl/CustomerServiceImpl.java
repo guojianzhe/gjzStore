@@ -18,4 +18,12 @@ public class CustomerServiceImpl implements CustomerService {
 		return list;
 	}
 
+	@Override
+	public void add(Customer customer) {
+		
+		CustomerDao customerDao = new CustomerDaoImpl();
+		
+		customerDao.add(customer);
+	}
+
 }
