@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.heima.domain.Customer" table="cst_customer" >
+	
+		<id name="cust_id" column="cust_id">
+<!-- 			做主键的增长方式的 -->
+			<generator class="native"></generator>
+		</id>
+		<property name="cust_name"></property>
+		<property name="cust_source"></property>
+		<property name="cust_industry"></property>
+		<property name="cust_level"></property>
+		<property name="cust_address"></property>
+		<property name="cust_phone"></property>
+		
+		<!-- 配置一对多的关系  集合 
+			name:集合的名字
+			
+			inverse="true"  指定放弃外键的维护权
+			cascade="save-update"   级联保存
+			
+		-->
+	</class>
+
+
+
+
+
+
+</hibernate-mapping>  
