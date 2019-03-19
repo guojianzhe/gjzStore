@@ -1,6 +1,5 @@
 package com.heima.dao;
 
-import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
